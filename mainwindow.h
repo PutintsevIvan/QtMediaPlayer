@@ -18,6 +18,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void setPlaybackMode();
+    void savePlaylist(QString filename);
+    void loadPlaylist(QString filename);
+
 private slots:
     void on_duration_changed(qint64 duration);
     void on_position_changed(qint64 position);
@@ -26,11 +30,16 @@ private slots:
     void on_pushButtonPlay_clicked();
     void on_pushButtonPause_clicked();
     void on_HorizontalSliderProgress_sliderMoved(int position);
+    void on_pushButtonMute_clicked();
+    void on_checkBoxLoop_stateChanged(int arg1);
+    void on_checkBoxShuffle_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
     QMediaPlayer* m_player;
     QMediaPlaylist* m_playlist;
     QStandardItemModel* m_playlist_model;
+
+    const QString DEFAULT_PLAYLIST_LOCATION = "C:\\Users\\79283\\source\\Qt\\build-MediaPlayer-Desktop_Qt_5_12_12_MSVC2015_64bit-Debug";
 };
 #endif // MAINWINDOW_H

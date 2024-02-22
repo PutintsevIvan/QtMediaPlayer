@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>544</width>
-    <height>433</height>
+    <width>599</width>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,19 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButtonOpen">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonPrev">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -27,7 +40,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonPrev">
+   <widget class="QPushButton" name="pushButtonPlay">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -40,7 +53,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonPlay">
+   <widget class="QPushButton" name="pushButtonPause">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -53,7 +66,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonPause">
+   <widget class="QPushButton" name="pushButtonStop">
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -66,23 +79,10 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonStop">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>70</y>
-      <width>71</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButtonNext">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>330</x>
       <y>70</y>
       <width>71</width>
       <height>31</height>
@@ -97,7 +97,7 @@
      <rect>
       <x>10</x>
       <y>170</y>
-      <width>461</width>
+      <width>551</width>
       <height>21</height>
      </rect>
     </property>
@@ -164,7 +164,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>150</y>
+      <y>140</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -177,10 +177,52 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>200</y>
-      <width>461</width>
+      <y>190</y>
+      <width>551</width>
       <height>161</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonMute">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>70</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxLoop">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>370</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Loop</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxShuffle">
+    <property name="geometry">
+     <rect>
+      <x>471</x>
+      <y>370</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shuffle</string>
     </property>
    </widget>
   </widget>
@@ -189,7 +231,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>544</width>
+     <width>599</width>
      <height>21</height>
     </rect>
    </property>
