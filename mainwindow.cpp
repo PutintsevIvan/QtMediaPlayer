@@ -43,6 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
      connect(this->m_playlist,&QMediaPlaylist::currentIndexChanged,this->ui->tableViewPlaylist,&QTableView::selectRow);
      connect(this->ui->tableViewPlaylist,&QTableView::doubleClicked,
              [this](const QModelIndex& index){m_playlist->setCurrentIndex(index.row());this->m_player->play();});
+     connect(this->m_playlist,&QMediaPlaylist::currentIndexChanged,
+             [this](int position){setTitles();m_player->play();});
 
      QString filename=DEFAULT_PLAYLIST_LOCATION + "playlist.m3u";
      loadPlaylist(filename);
@@ -51,13 +53,11 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     QString filename=DEFAULT_PLAYLIST_LOCATION + "playlist.m3u";
-    //savePlaylist(filename);
+    savePlaylist(filename);
     delete m_playlist_model;
     delete m_playlist;
     delete  m_player;
     delete ui;
-
-
 }
 
 void MainWindow::setPlaybackMode()
@@ -72,7 +72,7 @@ void MainWindow::savePlaylist(QString filename)
 {
     QString format=filename.split('.').last();
     QUrl url = QUrl::fromLocalFile(filename);
-    bool result=m_playlist->save(QUrl::fromLocalFile(filename),format.toStdString().c_str());
+    bool result=m_playlist->save(url,format.toStdString().c_str());
 }
 
 void MainWindow::loadPlaylist(QString filename)
@@ -87,6 +87,35 @@ void MainWindow::loadPlaylist(QString filename)
        items.append(new QStandardItem(url));
        m_playlist_model->appendRow(items);
     }
+}
+
+void MainWindow::loadFileToPlaylist(QString filename)
+{
+    QList<QStandardItem*> items;
+    items.append(new QStandardItem(QDir(filename).dirName()));
+    items.append(new QStandardItem(filename));
+    m_playlist_model->appendRow(items);
+    m_playlist->addMedia(QUrl(filename));
+
+}
+
+void MainWindow::setTitles()
+{
+    QString title=m_playlist->currentMedia().canonicalUrl().toString();
+    this->setWindowTitle(title.split('/').last());
+    this->ui->labelFile->setText(title);
+}
+
+QString *MainWindow::loadPlaylistToArray(QString filename)
+{
+    QFile file(filename);
+    QList<QString> lines;
+    while(!file.atEnd())
+    {
+        QByteArray line=file.readLine();
+        lines.append(line);
+    }
+    return lines.toVector().data();
 }
 
 void MainWindow::on_duration_changed(qint64 duration)
@@ -124,16 +153,18 @@ this->ui->labelFile->setText("File:"+file);
                 this,
                 "Open file",
                 "C:\\Music",
-                "Audio files (*.mp3 *.flac);; MP-3 (*.mp3);; Flac (*.flac)"
+                "Audio files (*.mp3 *.flac);; MP-3 (*.mp3);; Flac (*.flac);;Playlist (*.m3u *.CUE)"
 
             );
     for(QString filesPath:files)
     {
-       QList<QStandardItem*> items;
+      /* QList<QStandardItem*> items;
        items.append(new QStandardItem(QDir(filesPath).dirName()));
        items.append(new QStandardItem(filesPath));
        m_playlist_model->appendRow(items);
-       m_playlist->addMedia(QUrl(filesPath));
+       m_playlist->addMedia(QUrl(filesPath));*/
+        this->loadFileToPlaylist(filesPath);
+
     }
 }
 
