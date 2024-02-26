@@ -23,7 +23,7 @@ public:
     void loadPlaylist(QString filename);
     void loadFileToPlaylist(QString filename);
     void setTitles();
-QString* loadPlaylistToArray(QString filename);
+QVector<QString> loadPlaylistToArray(QString filename);
 
 private slots:
     void on_duration_changed(qint64 duration);
@@ -38,10 +38,16 @@ private slots:
     void on_checkBoxShuffle_stateChanged(int arg1);
 
 
+    void on_pushButtonClr_clicked();
+
+    void on_pushButtonDel_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer* m_player;
-    QMediaPlaylist* m_playlist;
+
+
+     QMediaPlaylist* m_playlist;
     QStandardItemModel* m_playlist_model;
 
     const QString DEFAULT_PLAYLIST_LOCATION = "C:\\Users\\79283\\source\\Qt\\build-MediaPlayer-Desktop_Qt_5_12_12_MSVC2015_64bit-Debug";

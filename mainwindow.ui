@@ -108,7 +108,7 @@
    <widget class="QSlider" name="horizontalSliderVolume">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>460</x>
       <y>120</y>
       <width>101</width>
       <height>16</height>
@@ -124,7 +124,7 @@
    <widget class="QLabel" name="labelVolume">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>460</x>
       <y>100</y>
       <width>101</width>
       <height>20</height>
@@ -150,8 +150,8 @@
    <widget class="QLabel" name="labelDuration">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>140</y>
+      <x>330</x>
+      <y>150</y>
       <width>271</width>
       <height>20</height>
      </rect>
@@ -223,6 +223,58 @@
     </property>
     <property name="text">
      <string>Shuffle</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBitrate">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bitrate:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelSampleRate">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>120</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> Sample rate: </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonDel">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>370</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DEL</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonClr">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>370</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CLR</string>
     </property>
    </widget>
   </widget>
