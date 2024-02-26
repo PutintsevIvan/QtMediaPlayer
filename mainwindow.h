@@ -22,6 +22,7 @@ public:
     void savePlaylist(QString filename);
     void loadPlaylist(QString filename);
     void loadFileToPlaylist(QString filename);
+    void loadCUEPlaylist(QString filename);
     void setTitles();
 QVector<QString> loadPlaylistToArray(QString filename);
 

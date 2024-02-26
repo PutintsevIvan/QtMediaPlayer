@@ -113,6 +113,26 @@ void MainWindow::loadFileToPlaylist(QString filename)
     m_playlist_model->appendRow(items);
 }
 
+void MainWindow::loadCUEPlaylist(QString filename)
+{
+   QFile file(filename);
+   file.open(QIODevice::ReadOnly);
+   QList<QString> tracks;
+   while(!file.atEnd())
+   {
+     QString track ="";
+    QByteArray buffer=file.readLine();
+    if(buffer.contains("TRACK"))
+    {
+            track=buffer;
+            track.remove(0,sizeof("TRACK"));
+            qDebug()<<track<<"\n";
+   }
+
+   }
+   file.close();
+}
+
 void MainWindow::setTitles()
 {
     QString title=m_playlist->currentMedia().canonicalUrl().toString();
@@ -130,6 +150,7 @@ QVector<QString> MainWindow::loadPlaylistToArray(QString filename)
         QByteArray line=file.readLine();
         lines.append(line);
     }
+    file.close();
     return lines.toVector();
 }
 
